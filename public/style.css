@@ -1,0 +1,15 @@
+.form-control-success:focus{
+    background-color: #dff0d8;
+    border-color: #d0e9c6;
+}
+.form-control-danger:focus{
+    background-color: #f2dede;
+    border-color: #ebcccc;
+}
+.form-control-info:focus{
+    background-color: #d9edf7;
+    border-color: #bcdff1;
+}
+.row{
+    margin-bottom: 30px;
+}

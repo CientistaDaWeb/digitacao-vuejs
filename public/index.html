@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Jogo de Digitação</title>
+</head>
+<body>
+<div id="app">
+    <div class="container" v-show="statusJogo == 'inicio'">
+        <h1>Jogo de digitação</h1>
+
+        <div class="row align-items-center">
+            <div class="col">
+                <div class="card">
+                    <div class="card-body">
+                        <h2 class="card-title">Iniciar jogo</h2>
+                        <form v-on:submit.prevent="iniciaJogo">
+                            <div class="row">
+                                <div class="col">
+                                    <input v-model="jogador" placeholder="Nome" class="form-control" />
+                                </div>
+                                <div class="col">
+                                    <select v-model="dificuldade" class="form-control">
+                                        <option v-for="(dificuldade, index) in dificuldades" :value="index">{{ dificuldade.nome }}</option>
+                                    </select>
+                                </div>
+
+                            </div>
+                        </form>
+                        <p class="small">Digite seu nome e aperte enter para começar!</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <div class="card-body">
+                        <h2 class="card-title">Instruções</h2>
+                        <p>Esse é um jogo para ver quem digita mais rápido feito em vuejs afim de estudar a ferramenta.</p>
+                        <ul class="list-group list-ordered">
+                            <ol class="list-group-item list-group-item-secondary">1. Selecione o jogador e clique em iniciar.</ol>
+                            <ol class="list-group-item list-group-item-secondary">2. Vá digitando as frases que aparecem.</ol>
+                            <ol class="list-group-item list-group-item-secondary">3. Quanto mais rápido e mais frases digitar mais pontos fará.</ol>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <div class="card-body">
+                        <h2 class="card-title">Frases</h2>
+                        <table class="table table-striped">
+                            <thead class="thead-inverse">
+                            <tr>
+                                <th>#</th>
+                                <th>Frase</th>
+                                <th>Tempo</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr v-for="(frase, i) in frases">
+                                <td>{{ i+1 }}</td>
+                                <td>{{ frase.texto }}</td>
+                                <td>{{ (frase.tempo + dificuldadeAtual.tempoAdicional)/100 }}s</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <div class="card-body">
+                        <h2 class="card-title">Top 15</h2>
+                        <table class="table table-striped">
+                            <thead class="thead-inverse">
+                            <tr>
+                                <th>#</th>
+                                <th>Nome</th>
+                                <th>Fase</th>
+                                <th>Pontos</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr v-for="(item, j) in filterPlacar(dificuldadeAtual.nome)">
+                                <td>{{ ++j }}</td>
+                                <td>{{ item.nome }}</td>
+                                <td>{{ item.fase }}</td>
+                                <td>{{ item.pontos | formatNumber }}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container" v-show="statusJogo == 'jogando'">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col">
+                        <h2 class="card-title"><b>{{ fraseAtual.texto }}</b></h2>
+                        <input class="form-control" onpaste="return false;" v-focus id="texto" ref="texto" :keyup="verificaDigitacao" :class="classeStatus" v-model="digitado">
+                    </div>
+                    <div class="col-4">
+                        <p>Fase <b>{{ fase }}/{{ frases.length }}</b></p>
+                        <p>Pontos: <b>{{ pontuacao | formatNumber }}</b></p>
+                        <p><span class="oi oi-clock"></span> <b>{{ cronometro }}</b></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://www.gstatic.com/firebasejs/live/4.0/firebase.js"></script>
+<script type="text/javascript" src="node_modules/vue/dist/vue.js"></script>
+<script type="text/javascript" src="node_modules/vuefire/dist/vuefire.js"></script>
+<script type="text/javascript" src="node_modules/lodash/lodash.js"></script>
+<script type="text/javascript" src="app/app.js"></script>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic-bootstrap.css"  crossorigin="anonymous">
+<link rel="stylesheet" href="style.css" type="text/css">
+</body>
+</html>

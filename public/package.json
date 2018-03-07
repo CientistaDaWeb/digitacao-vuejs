@@ -1,0 +1,10 @@
+{
+  "name": "jogo-de-digitacao",
+  "version": "1.0.0",
+  "dependencies": {},
+  "devDependencies": {
+    "lodash": "^4.17.4",
+    "vue": "^2.4.4",
+    "vuefire": "^1.4.3"
+  }
+}
