@@ -33,7 +33,7 @@ new Vue({
             { texto: 'Oi', tempo: 300 },
             { texto: 'Tudo bem?', tempo: 300 },
             { texto: 'Jogando um jogo', tempo: 350 },
-            { texto: 'Deigitando rápido', tempo: 350 },
+            { texto: 'Digitando rápido', tempo: 350 },
             { texto: 'Bacon é vida', tempo: 400 },
             { texto: 'Papibaquígrafo', tempo: 400 },
             { texto: 'Ninho de mafagafos', tempo: 450 },
