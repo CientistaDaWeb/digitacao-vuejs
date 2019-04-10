@@ -31,16 +31,16 @@ new Vue({
         statusJogo: 'inicio',
         frases:[
             { texto: 'Oi', tempo: 300 },
-            { texto: 'RevendaPRO', tempo: 300 },
-            { texto: 'Jogando jogo', tempo: 350 },
-            { texto: 'Carros na Serra', tempo: 350 },
+            { texto: 'Tudo bem?', tempo: 300 },
+            { texto: 'Jogando um jogo', tempo: 350 },
+            { texto: 'Deigitando rápido', tempo: 350 },
             { texto: 'Bacon é vida', tempo: 400 },
             { texto: 'Papibaquígrafo', tempo: 400 },
             { texto: 'Ninho de mafagafos', tempo: 450 },
-            { texto: 'RevendaPRO é outra coisa', tempo: 450 },
+            { texto: 'Esse jogo é outra coisa', tempo: 450 },
             { texto: 'Três pratos de trigo para três tigres tristes', tempo: 500 },
-            { texto: 'O setor Bagual é topzera', tempo: 500 },
-            { texto: 'O setor Estrelinha não é topzera', tempo: 500 }
+            { texto: 'Quem chegou aqui é topson', tempo: 500 },
+            { texto: 'Falta só essa frase para terminar tudo', tempo: 500 }
         ],
         dificuldades: [
             {nome: 'Fácil', modificador: 0.5, tempoAdicional: 1000},
